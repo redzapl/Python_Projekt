@@ -1,0 +1,69 @@
+import random
+import time
+
+#Einleitung
+print("***************************"); time.sleep(0.5)
+print("* Schere | Stein | Papier *"); time.sleep(0.5)
+print("***************************\n\n"); time.sleep(1.25)
+print("Falls Ihnen die Regeln nicht bekannt sind,"); 
+print("werden sie hier nochmal kurz erklärt:\n"); time.sleep(1)
+print("Schere schneidet Papier."); time.sleep(1)
+print("Stein zerschlägt Schere."); time.sleep(1)
+print("Papier bedeckt Stein.\n\n\n"); time.sleep(1)
+
+#Variablen
+figuren =("Schere", "Stein", "Papier")
+spielen = True
+
+while spielen:
+
+    #Spielerfigur auswählen
+    spielerauswahl = 0
+    while spielerauswahl <1 or spielerauswahl >3:
+        print("Geben Sie eine Zahl zwischen 1 und 3 an um Schere, Stein oder Papier zu wählen!")
+        try:  
+            spielerauswahl = int(input("[1]Schere [2]Stein [3]Papier\n"))
+        except:
+            print("Wählen Sie bitte eine Zahl zwischen 1 und 3. Keine Buchstaben oder andere Zahlen!")
+            spielerfigur = figuren[spielerauswahl - 1]
+
+     #Computerfigur auswählen
+    computerfigur = figuren[random.randint(0,2)]
+
+    #Sieger ermitteln
+    spielerfigur = figuren[spielerauswahl - 1]
+    if spielerfigur == computerfigur:
+        print("Unentschieden! Computer wählte", computerfigur,".")
+    else : 
+
+        if spielerfigur == "Schere":
+            if computerfigur == "Stein":
+                print ("Verloren. Der Computer wählte", computerfigur,".")
+        else:
+             print ("Gewonnen! Der Computer wählte", computerfigur,".")
+             
+
+        if spielerfigur == "Stein":
+            if computerfigur == "Schere":
+                print ("Gewonnen! Der Computer wählte", computerfigur,".")
+            else:
+                print ("Verloren. Der Computer wählte", computerfigur,".")
+
+        if spielerfigur == "Papier":
+            if computerfigur == "Schere":
+                print ("Verloren. Der Computer wählte", computerfigur,".")
+            else:
+                print ("Gewonnen! Der Computer wählte", computerfigur,".")
+
+   #Nochmal spielen?
+    time.sleep(1) 
+    entscheidung = ""
+    
+    while entscheidung not in ("j", "n"):
+        print("Geben Sie entweder 'j' oder 'n' ein!")
+        entscheidung = input("\nNochmahl spielen? [j] Ja [n] Nein\n")
+    
+    if(entscheidung == "n"):
+        print("Ok, auf Wiedersehen!")
+        spielen = False
+    
